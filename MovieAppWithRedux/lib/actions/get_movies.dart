@@ -17,3 +17,5 @@ class GetMoviesError {
 
   final Object error;
 }
+
+

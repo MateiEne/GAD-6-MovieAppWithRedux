@@ -8,6 +8,7 @@ import 'package:redux_epics/redux_epics.dart';
 import 'package:teest_api/data/movies_api.dart';
 import 'package:teest_api/epics/app_epics.dart';
 import 'package:teest_api/models/app_state.dart';
+import 'package:teest_api/presentation/movie_details.dart';
 import 'package:teest_api/presentation/movies_page.dart';
 import 'package:teest_api/reducer/reducer.dart';
 
@@ -25,7 +26,7 @@ void main() {
         NextDispatcher next,
       ) {
         next(action);
-        print(store.state);
+        print("Action: $action, state: ${store.state}");
       },
       EpicMiddleware<AppState>(epics.epics),
     ],
@@ -46,7 +47,14 @@ class MyApp extends StatelessWidget {
       store: store,
       child: MaterialApp(
         theme: ThemeData.dark(),
-        home: const MoviesPage(),
+        routes: {
+          '/': (context) {
+            return const MoviesPage();
+          },
+          '/movieDetails': (context) {
+            return const MovieDetails();
+          }
+        },
       ),
     );
   }
