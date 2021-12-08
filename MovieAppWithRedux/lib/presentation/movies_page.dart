@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
-import 'package:teest_api/actions/get_movies.dart';
-import 'package:teest_api/actions/select_movie.dart';
-import 'package:teest_api/container/is_loading_container.dart';
-import 'package:teest_api/container/movies_container.dart';
-import 'package:teest_api/models/app_state.dart';
-import 'package:teest_api/models/movie.dart';
+import '../actions/get_movies.dart';
+import '../actions/select_movie.dart';
+import '../container/is_loading_container.dart';
+import '../container/movies_container.dart';
+import '../models/index.dart';
 
 class MoviesPage extends StatefulWidget {
   const MoviesPage({Key? key}) : super(key: key);
@@ -21,7 +20,7 @@ class _MoviesPageState extends State<MoviesPage> {
   @override
   void initState() {
     super.initState();
-    final Store store = StoreProvider.of<AppState>(context, listen: false);
+    final Store<AppState> store = StoreProvider.of<AppState>(context, listen: false);
     store.dispatch(GetMovies(_onResult));
 
     _controller.addListener(_onScroll);
@@ -77,7 +76,7 @@ class _MoviesPageState extends State<MoviesPage> {
               return ListTile(
                 title: GestureDetector(
                   onTap: () {
-                    final Store store = StoreProvider.of<AppState>(context, listen: false);
+                    final Store<AppState> store = StoreProvider.of<AppState>(context, listen: false);
                     store.dispatch(SelectMovie(movies[index].id));
                     Navigator.pushNamed(context, '/movieDetails');
                     // showDialog<void>(

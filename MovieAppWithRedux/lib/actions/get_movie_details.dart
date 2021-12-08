@@ -1,4 +1,4 @@
-import 'package:teest_api/models/movie.dart';
+import '../models/index.dart';
 
 class GetMovieDetails {
   const GetMovieDetails(this.id, this.onResult);

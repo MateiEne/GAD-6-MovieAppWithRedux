@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:teest_api/models/movie.dart';
+import '../models/index.dart';
 
 class MoviesApi {
   Future<List<Movie>> getMovies(int page) async {

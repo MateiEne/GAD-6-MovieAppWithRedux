@@ -13,7 +13,7 @@ import 'package:teest_api/data/movies_api.dart';
 import 'package:teest_api/epics/app_epics.dart';
 
 import 'package:teest_api/main.dart';
-import 'package:teest_api/models/app_state.dart';
+import 'package:teest_api/models/index.dart';
 import 'package:teest_api/reducer/reducer.dart';
 
 void main() {

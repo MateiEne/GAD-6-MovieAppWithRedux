@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_epics/redux_epics.dart';
-import 'package:teest_api/data/movies_api.dart';
-import 'package:teest_api/epics/app_epics.dart';
-import 'package:teest_api/models/app_state.dart';
-import 'package:teest_api/presentation/movie_details.dart';
-import 'package:teest_api/presentation/movies_page.dart';
-import 'package:teest_api/reducer/reducer.dart';
+import 'data/movies_api.dart';
+import 'epics/app_epics.dart';
+import '../models/index.dart';
+import 'presentation/movie_details.dart';
+import 'presentation/movies_page.dart';
+import 'reducer/reducer.dart';
 
 void main() {
   final MoviesApi moviesApi = MoviesApi();
@@ -40,15 +40,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return StoreProvider(
+    return StoreProvider<AppState>(
       store: store,
       child: MaterialApp(
         theme: ThemeData.dark(),
         routes: {
-          '/': (context) {
+          '/': (BuildContext context) {
             return const MoviesPage();
           },
-          '/movieDetails': (context) {
+          '/movieDetails': (BuildContext context) {
             return const MovieDetails();
           }
         },

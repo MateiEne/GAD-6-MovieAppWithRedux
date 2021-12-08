@@ -1,9 +1,8 @@
 import 'package:redux/redux.dart';
-import 'package:teest_api/actions/get_movie_details.dart';
-import 'package:teest_api/actions/get_movies.dart';
-import 'package:teest_api/actions/select_movie.dart';
-import 'package:teest_api/models/app_state.dart';
-import 'package:teest_api/models/movie.dart';
+import '../actions/get_movie_details.dart';
+import '../actions/get_movies.dart';
+import '../actions/select_movie.dart';
+import '../models/index.dart';
 
 Reducer<AppState> reducer = combineReducers<AppState>(<Reducer<AppState>>[
   TypedReducer<AppState, GetMovies>(_getMovies),
@@ -47,7 +46,7 @@ AppState _getMovieDetails(AppState state, GetMovieDetails action) {
 }
 
 AppState _getMovieDetailsSuccessful(AppState state, GetMovieDetailsSuccessful action) {
-  final int index = state.movies.indexWhere((element) => element.id == action.movie.id);
+  final int index = state.movies.indexWhere((Movie element) => element.id == action.movie.id);
   state.movies[index] = action.movie;
   return state.copyWith(
     isLoading: false,

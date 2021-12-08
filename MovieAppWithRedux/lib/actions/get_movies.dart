@@ -1,4 +1,4 @@
-import 'package:teest_api/models/movie.dart';
+import '../models/index.dart';
 
 class GetMovies {
   const GetMovies(this.onResult);
@@ -17,5 +17,3 @@ class GetMoviesError {
 
   final Object error;
 }
-
-

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
-import 'package:teest_api/actions/get_movie_details.dart';
-import 'package:teest_api/container/is_loading_container.dart';
-import 'package:teest_api/container/selected_movie_container.dart';
-import 'package:teest_api/models/app_state.dart';
-import 'package:teest_api/models/movie.dart';
+import '../actions/get_movie_details.dart';
+import '../container/is_loading_container.dart';
+import '../container/selected_movie_container.dart';
+import '../models/index.dart';
 
 class MovieDetails extends StatefulWidget {
   const MovieDetails({Key? key}) : super(key: key);
@@ -22,7 +21,7 @@ class _MovieDetailsState extends State<MovieDetails> {
     store.dispatch(GetMovieDetails(store.state.selectedMovieId!, _onResult));
   }
 
-  void _onResult(action) {
+  void _onResult(dynamic action) {
     if (action is GetMovieDetailsError) {
       showDialog<Widget>(
         context: context,
@@ -58,9 +57,12 @@ class _MovieDetailsState extends State<MovieDetails> {
           }
           return SingleChildScrollView(
             child: Column(
-              children: [
-                Text(movie.description),
-                ...movie.screenshots.map((String url) => Padding(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(movie.description!),
+                ),
+                ...movie.screenshots!.map((String url) => Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Image.network(url),
                 )).toList(),

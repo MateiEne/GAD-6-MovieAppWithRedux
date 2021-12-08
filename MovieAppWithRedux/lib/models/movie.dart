@@ -1,22 +1,15 @@
-class Movie {
-  Movie({
-    required this.id,
-    required this.title,
-    required this.imageUrl,
-    required this.rating,
-    this.description = '',
-    this.screenshots = const <String>[],
-  });
+part of models;
 
-  final int id;
-  final String title;
-  final String imageUrl;
-  final String description;
-  final double rating;
-  final List<String> screenshots;
+@freezed
+class Movie with _$Movie {
+  const factory Movie({
+    required int id,
+    required String title,
+    required String imageUrl,
+    required double rating,
+    String? description,
+    List<String>? screenshots,
+  }) = Movie$;
 
-  @override
-  String toString() {
-    return '[id: $id, title: $title, imageUrl: $imageUrl, rating: $rating, description: $description, screenshots: $screenshots]';
-  }
+  factory Movie.fromJson(Map<dynamic, dynamic> json) => _$MovieFromJson(Map<String, dynamic>.from(json));
 }
