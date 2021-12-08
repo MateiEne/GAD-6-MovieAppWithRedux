@@ -20,7 +20,7 @@ class AppEpics {
 
   Stream<dynamic> getMovies(Stream<GetMovies> actions, EpicStore<AppState> store) {
     return actions //
-        .flatMap((GetMovies action) => Stream<void>.value(null)
+        .flatMap<dynamic>((GetMovies action) => Stream<void>.value(null)
             .asyncMap((_) => _api.getMovies(store.state.page))
             .map<Object>((List<Movie> movies) => GetMoviesSuccessful(movies))
             .onErrorReturnWith((error) => GetMoviesError(error))
@@ -29,7 +29,7 @@ class AppEpics {
 
   Stream getMovieDetails(Stream<GetMovieDetails> actions, EpicStore<AppState> store) {
     return actions //
-        .flatMap((GetMovieDetails action) => Stream<void>.value(null)
+        .flatMap<dynamic>((GetMovieDetails action) => Stream<void>.value(null)
             .asyncMap((_) => _api.getMovieDetails(action.id))
             .map<Object>((Movie movie) => GetMovieDetailsSuccessful(movie))
             .onErrorReturnWith((error) => GetMovieDetailsError(error))

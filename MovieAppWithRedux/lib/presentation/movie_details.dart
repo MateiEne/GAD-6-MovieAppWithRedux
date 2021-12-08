@@ -24,7 +24,7 @@ class _MovieDetailsState extends State<MovieDetails> {
 
   void _onResult(action) {
     if (action is GetMovieDetailsError) {
-      showDialog(
+      showDialog<Widget>(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
@@ -33,8 +33,6 @@ class _MovieDetailsState extends State<MovieDetails> {
           );
         },
       );
-    } else if (action is GetMovieDetailsSuccessful) {
-      action.movie
     }
   }
 

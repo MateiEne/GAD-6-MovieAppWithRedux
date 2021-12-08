@@ -47,6 +47,8 @@ AppState _getMovieDetails(AppState state, GetMovieDetails action) {
 }
 
 AppState _getMovieDetailsSuccessful(AppState state, GetMovieDetailsSuccessful action) {
+  final int index = state.movies.indexWhere((element) => element.id == action.movie.id);
+  state.movies[index] = action.movie;
   return state.copyWith(
     isLoading: false,
     selectedMovie: action.movie,

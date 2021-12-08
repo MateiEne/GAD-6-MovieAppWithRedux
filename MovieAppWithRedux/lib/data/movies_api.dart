@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:teest_api/models/movie.dart';
 
@@ -25,7 +24,7 @@ class MoviesApi {
       throw StateError('Error fetching the movies');
     }
 
-    final Map<String, dynamic> body = jsonDecode(response.body);
+    final Map<String, dynamic> body = jsonDecode(response.body) as Map<String, dynamic>;
     final Map<String, dynamic> data = body['data'] as Map<String, dynamic>;
     final List<dynamic> movies = data['movies'] as List<dynamic>;
 
@@ -63,7 +62,7 @@ class MoviesApi {
       throw StateError('Error fetching the movie details');
     }
 
-    final Map<String, dynamic> body = jsonDecode(response.body);
+    final Map<String, dynamic> body = jsonDecode(response.body) as Map<String, dynamic>;
     final Map<String, dynamic> data = body['data'] as Map<String, dynamic>;
     final Map<String, dynamic> movie = data['movie'] as Map<String, dynamic>;
 

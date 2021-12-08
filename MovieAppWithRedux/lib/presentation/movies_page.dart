@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
-import 'package:teest_api/actions/get_movie_details.dart';
 import 'package:teest_api/actions/get_movies.dart';
 import 'package:teest_api/actions/select_movie.dart';
 import 'package:teest_api/container/is_loading_container.dart';
@@ -30,7 +29,7 @@ class _MoviesPageState extends State<MoviesPage> {
 
   void _onResult(dynamic action) {
     if (action is GetMoviesError) {
-      showDialog(
+      showDialog<Widget>(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
